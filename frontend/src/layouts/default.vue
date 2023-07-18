@@ -5,8 +5,4 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.layout {
-  min-height: 100%;
-}
-</style>
+<style lang="scss" scoped></style>

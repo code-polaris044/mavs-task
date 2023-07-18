@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <h2>サインイン</h2>
     <ValidationObserver ref="obs" v-slot="{ handleSubmit }">
       <form class="form_main" @submit.prevent="handleSubmit(submit)">
