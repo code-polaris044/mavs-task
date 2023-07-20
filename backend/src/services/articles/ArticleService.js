@@ -8,7 +8,7 @@ class ArticleService {
   getArticleList(user_id) {
     return [{}];
   }
-  /**
+  /** modelsを操作できる
    * 記事情報取得
    * @param user_id
    * @return ランダム値

@@ -96,6 +96,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  color: RED;
+}
 .error {
   color: #ff0000;
 }
