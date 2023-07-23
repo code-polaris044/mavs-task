@@ -93,6 +93,7 @@ export default {
     },
   },
 }
+localStorage.setItem('test', 'テスト')
 </script>
 
 <style lang="scss" scoped>
