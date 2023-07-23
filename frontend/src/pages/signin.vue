@@ -75,6 +75,9 @@ export default {
         // Vuexストアにユーザー情報保存
         this.$store.commit('auth/setToken', response.token)
         this.$store.commit('auth/setUsername', response.email)
+
+        // ローカルストレージにユーザー情報を追加
+
         // Topにリダイレクト
         this.$router.push('/')
       } else {
@@ -93,7 +96,6 @@ export default {
     },
   },
 }
-localStorage.setItem('test', 'テスト')
 </script>
 
 <style lang="scss" scoped>
