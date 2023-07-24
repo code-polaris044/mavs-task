@@ -107,7 +107,10 @@ export default {
       console.log('this.formValue', this.formValue)
 
       // axiosで新規登録処理
-      await this.$axios.post('新規登録用API', this.formValue)
+      const response = await this.$axios.post(
+        `${this.$config.apiBaseUrl}/auth/signup`,
+        this.formValue
+      )
 
       const responseCode = 200 // 404
       if (responseCode === 200) {

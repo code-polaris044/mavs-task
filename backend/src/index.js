@@ -18,9 +18,9 @@ void (async () => {
   app.use('/', router);
 
   // Routeに一致しないRequest;
-  app.use((req, res, next) => {
-    res.json({ status: 404 });
-  });
+  // app.use((req, res, next) => {
+  //   res.json({ status: 404 });
+  // });
 
   // サーバ起動
   app.listen(3001, '0.0.0.0', () => {
