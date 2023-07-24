@@ -76,7 +76,7 @@ export default {
         this.$store.commit('auth/setToken', response.token)
         this.$store.commit('auth/setUsername', response.email)
         // Topにリダイレクト
-        this.$router.push('/')
+        this.$router.push('/gallery')
       } else {
         // 失敗
 
