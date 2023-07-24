@@ -4,8 +4,10 @@ export default function ({ $axios, store }) {
     // Vuexストアからトークンを取得
     const token = store.getters['auth/getToken']
 
-    // ログにトークンを表示
-    console.log('Token:', token)
+    // config.headersをconsole.logで出力して確認
+    console.log('HTTPヘッダー:', config.headers)
+
+    console.log('Vuexストアのトークン:', store.getters.getToken)
 
     // トークンがあれば、HTTPヘッダーに付与
     if (token) {
