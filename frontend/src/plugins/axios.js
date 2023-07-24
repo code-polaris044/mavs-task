@@ -7,7 +7,7 @@ export default function ({ $axios, store }) {
     // config.headersをconsole.logで出力して確認
     console.log('HTTPヘッダー:', config.headers)
 
-    console.log('Vuexストアのトークン:', store.getters.getToken)
+    console.log('Vuexストアのトークン:', token)
 
     // トークンがあれば、HTTPヘッダーに付与
     if (token) {
