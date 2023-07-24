@@ -1,21 +1,32 @@
-export default function ({ $axios, store }) {
-  // リクエストインターセプターを設定
-  $axios.onRequest((config) => {
-    //ストアからトークンを取得
-    const token = store.state.auth.token
+// // plugins/axios.js
 
-    // config.headersをconsole.logで出力して確認
-    console.log('HTTPヘッダー:', config.headers)
+// function setupAxiosInterceptor($axios, token) {
+//   // リクエストインターセプターを設定
+//   $axios.onRequest(async (config) => {
+//     // トークンがあれば、HTTPヘッダーに付与
+//     if (token) {
+//       config.headers.common['Authorization'] = `Bearer ${token}`
+//     }
 
-    console.log('Vuexストアのトークン:', token)
+//     // config.headersをconsole.logで出力して確認
+//     console.log('HTTPヘッダー:', config.headers)
+//     console.log('Vuexストアのトークンが更新されました:', token)
 
-    // トークンがあれば、HTTPヘッダーに付与
-    if (token) {
-      config.headers.common['Authorization'] = `Bearer ${token}`
-    } else {
-      console.log('トークンはありません')
-    }
+//     return config
+//   })
+// }
 
-    return config
-  })
-}
+// export default function ({ $axios, store }) {
+//   // Vuexゲッターを監視
+//   store.watch(
+//     (state, getters) => getters['auth/getToken'],
+//     (token) => {
+//       console.log('Vuexストアのトークンが更新されました:', token)
+//       setupAxiosInterceptor($axios, token) // トークンが更新された後にリクエストインターセプターを設定
+//     }
+//   )
+
+//   // 初期状態でリクエストインターセプターを設定
+//   const initialToken = store.getters['auth/getToken']
+//   setupAxiosInterceptor($axios, initialToken)
+// }

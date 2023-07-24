@@ -61,35 +61,45 @@ export default {
   methods: {
     // サインインの送信処理
     async submit() {
-      const response = await this.$axios.$post(
-        `${this.$config.apiBaseUrl}/auth/signin`,
-        this.formValue
-      )
-      console.log('サインインAPI結果', response)
+      try {
+        const response = await this.$axios.$post(
+          `${this.$config.apiBaseUrl}/auth/signin`,
+          this.formValue
+        )
+        console.log('サインインAPI結果', response)
 
-      // トークンの有無でログインできたか判断
-      const hasToken = !!response.token
-      if (hasToken) {
-        // 成功
+        // トークンの有無でログインできたか判断
+        const hasToken = !!response.token
+        if (hasToken) {
+          // 成功
 
-        // Vuexストアにユーザー情報保存
-        this.$store.commit('auth/setToken', response.token)
-        this.$store.commit('auth/setUsername', response.email)
+          // Vuexストアにユーザー情報保存
+          this.$store.commit('auth/setToken', response.token)
+          this.$store.commit('auth/setUsername', response.email)
 
-        // Topにリダイレクト
-        this.$router.push('/gallery')
-      } else {
-        // 失敗
+          // HTTPヘッダーにトークンを付与
+          this.$axios.setToken(response.token, 'Bearer')
 
-        // トースト表示
-        this.$toast.global.error({
-          message: 'メールアドレスまたはパスワードが間違っています',
-        })
-        // 入力項目リセット
-        this.formValue = {
-          email: '',
-          password: '',
+          this.$router.push('/gallery')
+        } else {
+          // 失敗
+
+          // トースト表示
+          this.$toast.global.error({
+            message: 'メールアドレスまたはパスワードが間違っています',
+          })
+          // 入力項目リセット
+          this.formValue = {
+            email: '',
+            password: '',
+          }
         }
+      } catch (error) {
+        // エラーハンドリング
+        console.error('サインインエラー:', error)
+        this.$toast.global.error({
+          message: 'サインインに失敗しました',
+        })
       }
     },
   },

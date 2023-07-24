@@ -8,6 +8,7 @@ export const state = () => ({
 export const mutations = {
   setToken(state, token) {
     state.token = token
+    console.log('トークンがセットされました:', token)
   },
   setUsername(state, username) {
     state.username = username
