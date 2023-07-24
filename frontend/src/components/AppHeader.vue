@@ -35,6 +35,9 @@ export default {
       // store/auth.jsのactionsのlogoutを実行
       this.$store.commit('auth/setToken', null)
       this.$store.commit('auth/setUsername', null)
+
+      // Topページにリダイレクト
+      this.$router.push('/')
     },
   },
 }
