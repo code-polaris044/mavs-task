@@ -76,12 +76,6 @@ export default {
         this.$store.commit('auth/setToken', response.token)
         this.$store.commit('auth/setUsername', response.email)
 
-        // const token = this.$store.getters['auth/getToken']
-
-        // // config.headersをconsole.logで出力して確認
-        // console.log('HTTPヘッダー:', config.headers)
-
-        // console.log('Vuexストアのトークン:', token)
         // Topにリダイレクト
         this.$router.push('/gallery')
       } else {
