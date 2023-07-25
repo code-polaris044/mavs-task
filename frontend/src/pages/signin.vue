@@ -1,51 +1,53 @@
 <template>
-  <div class="bg">
-    <h2>サインイン</h2>
-    <ValidationObserver ref="obs" v-slot="{ handleSubmit }">
-      <form class="form_main" @submit.prevent="handleSubmit(submit)">
-        <ValidationProvider
-          v-slot="{ errors }"
-          rules="required|email"
-          name="email"
-        >
-          <div class="-email">
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="メールアドレス"
-              :value="formValue.email"
-              @input="formValue.email = $event.target.value"
-            />
-          </div>
-          <div class="error">{{ errors[0] }}</div>
-        </ValidationProvider>
-        <ValidationProvider
-          v-slot="{ errors }"
-          rules="required"
-          name="password"
-        >
-          <div class="-password">
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="パスワード"
-              :value="formValue.password"
-              @input="formValue.password = $event.target.value"
-            />
-          </div>
-          <div class="error">{{ errors[0] }}</div>
-        </ValidationProvider>
-        <button
-          type="submit"
-          :disabled="!formValue.email || !formValue.password"
-        >
-          ログイン
-        </button>
-      </form>
-    </ValidationObserver>
-  </div>
+  <main class="sigin__container">
+    <div class="sigin__inner">
+      <h2>サインイン</h2>
+      <ValidationObserver ref="obs" v-slot="{ handleSubmit }">
+        <form class="form_main" @submit.prevent="handleSubmit(submit)">
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required|email"
+            name="email"
+          >
+            <div class="-email">
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="メールアドレス"
+                :value="formValue.email"
+                @input="formValue.email = $event.target.value"
+              />
+            </div>
+            <div class="error">{{ errors[0] }}</div>
+          </ValidationProvider>
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+            name="password"
+          >
+            <div class="-password">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="パスワード"
+                :value="formValue.password"
+                @input="formValue.password = $event.target.value"
+              />
+            </div>
+            <div class="error">{{ errors[0] }}</div>
+          </ValidationProvider>
+          <button
+            type="submit"
+            :disabled="!formValue.email || !formValue.password"
+          >
+            ログイン
+          </button>
+        </form>
+      </ValidationObserver>
+    </div>
+  </main>
 </template>
 
 <script>
@@ -109,6 +111,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.sigin__container {
+}
+.sigin__inner {
+  width: 400px;
+  margin: auto;
+  background: white;
+  text-align: center;
+  height: 300px;
+  display: grid;
+  place-content: center;
+}
+
 h2 {
   color: RED;
 }

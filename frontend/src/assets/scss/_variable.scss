@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // メディアクエリ
 $pc: 'only screen and (min-width: 768px) ';
 $sp: 'not all and (min-width: 768px) ';
@@ -25,7 +27,7 @@ $common-article-width-pc: min(100% - 80px, 640px);
 $common-article-width-sp: min(100% - 40px, 560px);
 $about-contents-width-pc: min(100% - 80px, 720px);
 $contact-contents-width-pc: min(100% - 80px, 720px);
-$front-contents-width-pc: min(100% - 80px, 840px);
+$index-img-width: min(100% - 40px, 740px);
 
 
 // color
@@ -35,7 +37,7 @@ $c-assort-btn:hsl(232, 22%, 87%);
 $c-white: hsl(0, 0%, 100%);
 $c-base:hsla(252, 100%, 99%);
 $c-base-reverse: hsla(184, 100%, 87%);
-$c-accent: hsl(49, 52%, 25%);
+$c-accent: #22664A;
 
 // font-family 
 $f-font-awesome: "Font Awesome 5 Free",
@@ -127,3 +129,10 @@ $z3: 3; //l-hamburger
         width: $common-contents-width-tab;
     }
 }
+
+$d: 6em;
+$r: .5*$d;
+$g: $d*(math.sqrt(2) - 1);
+$s: $d+$g;
+$p: $r/3;
+$q: 2*$p;

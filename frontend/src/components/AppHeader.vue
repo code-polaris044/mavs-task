@@ -1,17 +1,19 @@
 <template>
   <!-- アプリケーションの共通ヘッダー -->
-  <header class="header">
-    <h1>
-      <nuxt-link to="/">メモアプリ</nuxt-link>
-    </h1>
-    <div>
-      <div v-if="isLogin">
-        <p>{{ username }}</p>
-        <button type="button" @click="logout">ログアウト</button>
-      </div>
-      <div v-else>
-        <nuxt-link to="/signin">サインイン</nuxt-link>
-        <nuxt-link to="/signup">新規登録</nuxt-link>
+  <header :class="['header', { 'header--logged-in': isLogin }]">
+    <div class="header__wrap">
+      <h1>
+        <nuxt-link to="/">メモアプリ</nuxt-link>
+      </h1>
+      <div>
+        <div v-if="isLogin">
+          <p>{{ username }}</p>
+          <button type="button" @click="logout">ログアウト</button>
+        </div>
+        <div v-else>
+          <nuxt-link to="/signin">サインイン</nuxt-link>
+          <nuxt-link to="/signup">新規登録</nuxt-link>
+        </div>
       </div>
     </div>
   </header>
@@ -45,8 +47,24 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
+  height: 70px;
+  margin-bottom: 100px;
+  @include tab {
+    margin-bottom: 50px;
+  }
+
+  .header__wrap {
+    width: $common-contents-width-pc;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header--logged-in {
+  background-color: $c-accent;
+  color: white;
 }
 </style>
