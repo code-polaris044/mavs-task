@@ -8,23 +8,21 @@ function setupAxiosInterceptor($axios, token) {
       config.headers.common['Authorization'] = `Bearer ${token}`
     }
 
+    console.log('Vuexストアのトークンが更新されました:', token)
+
     // config.headersをconsole.logで出力して確認
     console.log('HTTPヘッダー:', config.headers)
-    console.log('Vuexストアのトークンが更新されました:', token)
 
     return config
   })
 }
 
 export default function ({ $axios, store }) {
-  // Vuexゲッターを監視
-  store.watch(
-    (state, getters) => getters['auth/getToken'],
-    (token) => {
-      console.log('Vuexストアのトークンが更新されました:', token)
-      setupAxiosInterceptor($axios, token) // トークンが更新された後にリクエストインターセプターを設定
-    }
-  )
+  const token = store.getters['auth/getToken'] // ゲッターからトークンを取得
 
-  // 初回のトークンはログに出力しない
+  // リクエストインターセプターを設定
+  setupAxiosInterceptor($axios, token)
+
+  // トークンをログに出力
+  console.log('初回のVuexストアのトークン:', token)
 }
