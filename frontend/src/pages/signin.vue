@@ -78,7 +78,9 @@ export default {
           this.$store.commit('auth/setUsername', response.email)
 
           // HTTPヘッダーにトークンを付与
-          this.$axios.setToken(response.token, 'Bearer')
+          // this.$axios.setToken(response.token, 'Bearer')
+
+          // HTTPヘッダーを確認
 
           this.$router.push('/gallery')
         } else {
