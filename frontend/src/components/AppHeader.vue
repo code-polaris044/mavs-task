@@ -2,7 +2,7 @@
   <!-- アプリケーションの共通ヘッダー -->
   <header :class="['header', { 'header--logged-in': isLogin }]">
     <div class="header__wrap">
-      <h1>
+      <h1 class="title">
         <nuxt-link to="/">メモアプリ</nuxt-link>
       </h1>
       <div>
@@ -11,8 +11,8 @@
           <button type="button" @click="logout">ログアウト</button>
         </div>
         <div v-else>
-          <nuxt-link to="/signin">サインイン</nuxt-link>
-          <nuxt-link to="/signup">新規登録</nuxt-link>
+          <nuxt-link to="/signin" class="link__signIn">サインイン</nuxt-link>
+          <nuxt-link to="/signup" class="link__signUp">新規登録</nuxt-link>
         </div>
       </div>
     </div>
@@ -49,6 +49,7 @@ export default {
 .header {
   height: 70px;
   margin-bottom: 100px;
+
   @include tab {
     margin-bottom: 50px;
   }
@@ -60,11 +61,23 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
   }
+}
+
+.nuxt-link-active {
+  color: white;
+  font-size: $fs-c-24;
 }
 
 .header--logged-in {
   background-color: $c-accent;
   color: white;
+}
+
+.link__signIn,
+.link__signUp {
+  color: white;
+  font-size: $fs-c-18;
 }
 </style>

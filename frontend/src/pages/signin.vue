@@ -1,7 +1,7 @@
 <template>
   <main class="sigin__container">
     <div class="sigin__inner">
-      <h2>サインイン</h2>
+      <h2 class="sigin__title">Sigin In</h2>
       <ValidationObserver ref="obs" v-slot="{ handleSubmit }">
         <form class="form_main" @submit.prevent="handleSubmit(submit)">
           <ValidationProvider
@@ -9,8 +9,9 @@
             rules="required|email"
             name="email"
           >
-            <div class="-email">
+            <div class="sigin-email">
               <input
+                class="sigin-email-input"
                 id="email"
                 type="email"
                 name="email"
@@ -26,8 +27,9 @@
             rules="required"
             name="password"
           >
-            <div class="-password">
+            <div class="sigin-password">
               <input
+                class="sigin-password-input"
                 id="password"
                 type="password"
                 name="password"
@@ -39,6 +41,7 @@
             <div class="error">{{ errors[0] }}</div>
           </ValidationProvider>
           <button
+            class="sigin__btn"
             type="submit"
             :disabled="!formValue.email || !formValue.password"
           >
@@ -111,20 +114,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sigin__container {
-}
 .sigin__inner {
-  width: 400px;
-  margin: auto;
+  width: min(100% - 40px, 400px);
+  margin: 0 auto;
   background: white;
   text-align: center;
   height: 300px;
   display: grid;
   place-content: center;
+  gap: 20px;
+}
+.sigin__title {
+  font-size: $fs-c-20;
+  font-weight: 600;
 }
 
-h2 {
-  color: RED;
+.sigin__btn {
+  background: $c-accent;
+  padding: 8px 16px;
+  border-radius: 1.5em;
+}
+
+.sigin-email {
+  margin-bottom: 20px;
+
+  .sigin-email-input {
+    padding: 8px 16px;
+  }
+}
+
+.sigin-password {
+  margin-bottom: 20px;
+  .sigin-password-input {
+    padding: 8px 16px;
+  }
 }
 .error {
   color: #ff0000;
