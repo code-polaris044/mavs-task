@@ -133,6 +133,7 @@ export default {
   background: $c-accent;
   padding: 8px 16px;
   border-radius: 1.5em;
+  color: white;
 }
 
 .sigin-email {
