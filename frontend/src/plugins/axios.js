@@ -2,16 +2,17 @@
 
 function setupAxiosInterceptor($axios, token) {
   // リクエストインターセプターを設定
-  $axios.onRequest(async (config) => {
+  console.log('リクエストインターセプターを設定')
+  $axios.onRequest((config) => {
     // トークンがあれば、HTTPヘッダーに付与
+
     if (token) {
       config.headers.common['Authorization'] = `Bearer ${token}`
+      // config.headersをconsole.logで出力して確認
+      console.log('HTTPヘッダー:', config.headers)
     } else {
-      console.log('tokenは、nullです')
+      console.log('nullです')
     }
-
-    // config.headersをconsole.logで出力して確認
-    console.log('HTTPヘッダー:', config.headers)
 
     return config
   })

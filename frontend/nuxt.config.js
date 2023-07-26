@@ -23,7 +23,7 @@ export default {
   plugins: [
     { src: '~/plugins/veeValidate.js' },
     { src: '~/plugins/persistedstate.js', ssr: false },
-    { src: '~/plugins/axios.js' },
+    { src: '~/plugins/axios.js', ssr: false },
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
