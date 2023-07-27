@@ -9,8 +9,9 @@
             rules="required"
             name="username"
           >
-            <div class="-username">
+            <div class="sigup-username">
               <input
+                class="sigup-username-input"
                 id="username"
                 type="text"
                 name="username"
@@ -26,8 +27,9 @@
             rules="required|email"
             name="email"
           >
-            <div class="-email">
+            <div class="sigup-email">
               <input
+                class="sigup-email-input"
                 id="email"
                 type="email"
                 name="email"
@@ -43,8 +45,9 @@
             rules="required"
             name="password"
           >
-            <div class="-password">
+            <div class="sigup-password">
               <input
+                class="sigup-password-input"
                 id="password"
                 type="password"
                 name="password"
@@ -60,8 +63,9 @@
             rules="required|confirmed:password"
             name="passwordConfirm"
           >
-            <div class="-password">
+            <div class="sigup-password">
               <input
+                class="sigup-password-input"
                 id="passwordConfirm"
                 type="password"
                 name="passwordConfirm"
@@ -150,7 +154,18 @@ export default {
   font-size: $fs-c-20;
   font-weight: 600;
 }
+.sigup-username,
+.sigup-email,
+.sigup-password {
+  margin-bottom: 20px;
+}
 
+.sigup-username-input,
+.sigup-email-input,
+.sigup-password-input {
+  background: hsl(252, 100%, 99%);
+  padding: 8px 16px;
+}
 .sigup__btn {
   background: $c-accent;
   padding: 8px 16px;
