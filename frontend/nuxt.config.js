@@ -1,5 +1,6 @@
 export default {
   srcDir: './src',
+  mode: 'spa',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'mavs-task',
@@ -23,7 +24,7 @@ export default {
   plugins: [
     { src: '~/plugins/veeValidate.js' },
     { src: '~/plugins/persistedstate.js', ssr: false },
-    { src: '~/plugins/axios.js', ssr: false },
+    { src: '~/plugins/axios.js', mode: 'client' },
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
