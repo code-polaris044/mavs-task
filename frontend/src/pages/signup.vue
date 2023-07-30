@@ -117,7 +117,7 @@ export default {
       try {
         // axiosで新規登録処理
         const response = await this.$axios.post(
-          `${this.$config.apiBaseUrl}/users/users.router`,
+          `${this.$config.apiBaseUrl}/users/users.router.js`,
           this.formValue
         )
 
