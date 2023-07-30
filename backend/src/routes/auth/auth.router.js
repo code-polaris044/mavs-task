@@ -9,7 +9,7 @@ const authService = new AuthService();
 /**
  * サインイン
  */
-router.get('/signin', async (req, res, next) => {
+router.post('/signin', async (req, res, next) => {
   try {
     // リクエストパラメーター
     const { email, password } = req.body;
