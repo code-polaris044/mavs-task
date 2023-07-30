@@ -112,11 +112,12 @@ export default {
     // 新規登録の送信処理
     async submit() {
       console.log('this.formValue', this.formValue)
+      console.log(`${this.$config.apiBaseUrl}/users/users.router.js`)
 
       try {
         // axiosで新規登録処理
         const response = await this.$axios.post(
-          `${this.$config.apiBaseUrl}/users/signup`,
+          `${this.$config.apiBaseUrl}/users/users.router`,
           this.formValue
         )
 
