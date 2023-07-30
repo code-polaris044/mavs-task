@@ -13,6 +13,9 @@ router.post('/signin', async (req, res, next) => {
   try {
     // リクエストパラメーター
     const { email, password } = req.body;
+    const data = {
+      text: 'success!',
+    };
 
     // ユーザー存在チェックを行う
     const resSearchUser = await userService.searchUser('', '', email, password);

@@ -113,20 +113,29 @@ export default {
     async submit() {
       console.log('this.formValue', this.formValue)
 
-      // axiosで新規登録処理
-      await this.$axios.post(
-        `${this.$config.apiBaseUrl}/users/usersrouter`,
-        this.formValue
-      )
+      try {
+        // axiosで新規登録処理
+        const response = await this.$axios.post(
+          `${this.$config.apiBaseUrl}/users/signup`,
+          this.formValue
+        )
 
-      const responseCode = 200 // 404
-      if (responseCode === 200) {
-        // 成功
+        if (response.status === 200) {
+          // 成功
 
-        // サインインページにリダイレクト
-        this.$router.push('/signin')
-      } else {
-        // 失敗
+          // サインインページにリダイレクト
+          this.$router.push('/signin')
+        } else {
+          // 失敗
+
+          // トースト表示
+          this.$toast.global.error({
+            message: '新規登録できませんでした。もう一度お試しください',
+          })
+        }
+      } catch (error) {
+        // エラーハンドリング
+        console.error('新規登録エラー:', error)
 
         // トースト表示
         this.$toast.global.error({
