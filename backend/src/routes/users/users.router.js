@@ -6,7 +6,7 @@ const router = express.Router();
 /**
  * ユーザー新規登録
  */
-router.post('/signup', async (req, res, next) => {
+router.get('/createUser', async (req, res, next) => {
   try {
     let res = {};
 
