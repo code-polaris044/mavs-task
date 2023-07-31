@@ -11,12 +11,28 @@
         ></textarea>
       </div>
       <div class="single__btn__wrap">
-        <button class="keepp__btn" type="submit">保存</button>
-        <button class="back__btn" type="submit">一覧へ</button>
+        <button class="keepp__btn" type="submit" @click="save">保存</button>
+        <button class="back__btn" type="submit" @click="gallery">一覧へ</button>
       </div>
     </div>
   </main>
 </template>
+<script>
+export default {
+  methods: {
+    save() {
+      let memo = {
+        title: 'メモのタイトルです',
+        content: 'メモの内容です',
+      }
+      this.$store.commit('save', memo)
+    },
+    gallery() {
+      this.$router.push('/gallery')
+    },
+  },
+}
+</script>
 <style lang="scss" scoped>
 .single__contents {
   width: $common-contents-width-pc;

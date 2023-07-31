@@ -6,9 +6,10 @@ const router = express.Router();
 /**
  * ユーザー新規登録
  */
-router.post('/signup', async (req, res, next) => {
+router.get('/createUser', async (req, res, next) => {
   try {
     let res = {};
+
     const body = {};
     res.status(200).json(body);
   } catch (error) {

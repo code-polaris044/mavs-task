@@ -11,7 +11,9 @@
               <h3 class="memo__title">タイトル...</h3>
             </div>
             <div class="memo__btn__wrap">
-              <button class="memo__edit__btn" type="submit">編集</button>
+              <button class="memo__edit__btn" type="submit" @click="single">
+                編集
+              </button>
               <button class="memo__delete_btn" type="submit">削除</button>
             </div>
           </div>
@@ -20,7 +22,7 @@
           <div class="memo__item">
             <div class="memo__text__wrap">
               <time datetime="2023.7.18" class="memo__date">2023.7.18</time>
-              <h3 class="memo__title">タイトル...</h3>
+              <h3 class="memo__title">タイトル...タイトル...タイトル...</h3>
             </div>
             <div class="memo__btn__wrap">
               <button class="memo__edit__btn" type="submit">編集</button>
@@ -58,56 +60,9 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      formValue: {
-        email: '',
-        password: '',
-      },
-    }
-  },
   methods: {
-    // サインインの送信処理
-    async submit() {
-      try {
-        const response = await this.$axios.$post(
-          `${this.$config.apiBaseUrl}/auth/signin`,
-          this.formValue
-        )
-        console.log('サインインAPI結果', response)
-
-        // トークンの有無でログインできたか判断
-        const hasToken = !!response.token
-        if (hasToken) {
-          // 成功
-
-          // Vuexストアにユーザー情報保存
-          this.$store.commit('auth/setToken', response.token)
-          this.$store.commit('auth/setUsername', response.email)
-
-          // HTTPヘッダーを確認
-
-          this.$router.push('/gallery')
-        } else {
-          // 失敗
-
-          // トースト表示
-          this.$toast.global.error({
-            message: 'メールアドレスまたはパスワードが間違っています',
-          })
-          // 入力項目リセット
-          this.formValue = {
-            email: '',
-            password: '',
-          }
-        }
-      } catch (error) {
-        // エラーハンドリング
-        console.error('サインインエラー:', error)
-        this.$toast.global.error({
-          message: 'サインインに失敗しました',
-        })
-      }
+    single() {
+      this.$router.push('/single')
     },
   },
 }
