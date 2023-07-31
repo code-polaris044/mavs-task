@@ -171,6 +171,8 @@ export default {
   font-weight: 500;
 
   @include sp {
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
   }
 }
