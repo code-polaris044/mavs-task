@@ -4,7 +4,6 @@ export const state = () => ({
   token: null,
   username: null,
   isLoggedIn: false,
-  memos: [],
 })
 
 export const mutations = {
@@ -14,10 +13,6 @@ export const mutations = {
   },
   setUsername(state, username) {
     state.username = username
-  },
-  //メモ保存
-  save(state, newMemo) {
-    state.memos.unshift(newMemo)
   },
 }
 
