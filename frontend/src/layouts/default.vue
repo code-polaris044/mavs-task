@@ -42,5 +42,7 @@ export default {
 .layout--logged-in {
   background: #e0e0e0;
   animation: initial;
+  width: 100%;
+  height: 100vh;
 }
 </style>
