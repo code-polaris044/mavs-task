@@ -3,7 +3,9 @@
     <div class="gallery__contents">
       <h2 class="gallery__title">メモ一覧</h2>
       <div class="gallery__innner">
-        <button class="add__btn" type="submit">メモ追加</button>
+        <button class="add__btn" type="submit" @click="newSingle">
+          メモ追加
+        </button>
         <div class="memo__wrap">
           <div class="memo__item">
             <div class="memo__text__wrap">
@@ -61,6 +63,9 @@
 <script>
 export default {
   methods: {
+    newSingle() {
+      this.$router.push('/newSingle')
+    },
     single() {
       this.$router.push('/single')
     },

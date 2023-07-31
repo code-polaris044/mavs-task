@@ -116,7 +116,7 @@ export default {
 
       try {
         // axiosで新規登録処理
-        const response = await this.$axios.get(
+        const response = await this.$axios.post(
           `${this.$config.apiBaseUrl}/users/createUser`,
           this.formValue
         )
