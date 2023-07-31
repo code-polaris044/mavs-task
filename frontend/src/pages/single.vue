@@ -10,8 +10,10 @@
           placeholder="ご入力ください。"
         ></textarea>
       </div>
-      <button class="keepp__btn" type="submit">保存</button>
-      <button class="back__btn" type="submit">一覧へ</button>
+      <div class="single__btn__wrap">
+        <button class="keepp__btn" type="submit">保存</button>
+        <button class="back__btn" type="submit">一覧へ</button>
+      </div>
     </div>
   </main>
 </template>
@@ -40,11 +42,24 @@
     margin-bottom: 60px;
   }
 
+  .single__btn__wrap {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+
   .back__btn {
-    display: block;
-    margin: 0 auto;
     padding: 8px 16px;
     background: #726868;
+    border-radius: 20px;
+    color: $c-white;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .keepp__btn {
+    padding: 8px 16px;
+    background: #4de7a8;
     border-radius: 15px;
     color: $c-white;
     font-weight: 600;
@@ -61,7 +76,7 @@
 .single__textarea {
   border: 1px solid $c-text;
   border-radius: 5px;
-  height: 500px;
+  height: 400px;
   width: 100%;
   resize: none;
   padding: 10px;
