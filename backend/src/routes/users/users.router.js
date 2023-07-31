@@ -15,8 +15,5 @@ router.post('/createUser', async (req, res, next) => {
     res.status(500).json(body);
   }
 });
-/**
- *
- */
 
 export default router;

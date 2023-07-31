@@ -13,7 +13,7 @@ const createModel = (sequelize, DataTypes) => {
   }
   users.init(
     {
-      name: DataTypes.STRING,
+      name: DataTypes.STRING, //データの型を設定
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       created_at: DataTypes.DATE,
@@ -21,8 +21,8 @@ const createModel = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'users',
-      underscored: true,
+      modelName: 'users', //usersモデル
+      underscored: true, //jsプロパティ名を共通化
     }
   );
   return users;
