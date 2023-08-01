@@ -1,29 +1,35 @@
 // import nanoid from 'nanoid';
 import db from '../../models/index.js';
 import AuthService from '../auth/AuthService.js';
-
-//追加 import
 import UsersRouter from '../routes/users.router.js';
 
 const authService = new AuthService();
 const usersRouter = new UsersRouter();
 
 // クラス
-
-//追加class
-class UsersRouter {
+class UserService {
   /**
    * ユーザー情報登録
-   *　@param {name} username - ユーザー名
-   *　@param {email} email -　eメール
-   *　@param {password} password -　パスワード
-   *  @returns {Object} - ユーザー情報オブジェクト
+   * @param {string} name ユーザー名
+   * @param {string} email メールアドレス
+   * @param {string} password パスワード
+   * @returns {Object} 登録されたユーザー情報
    */
+  async createUser(name, email, password) {
+    // 例として以下のようにデータベースにユーザー情報を登録する
+    const user = await db.Users.create({
+      name: name,
+      email: email,
+      password: password,
+    });
 
-  async getUser(user_id) {
-    // UsersRouterクラスのgetUserメソッドを呼び出し、ユーザー情報を取得する
-    const user = await usersRouter.getUser(user_id);
-    return user;
+    // 登録されたユーザー情報を返す
+    const resData = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    };
+    return resData;
   }
 }
 
