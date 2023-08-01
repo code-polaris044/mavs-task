@@ -1,10 +1,19 @@
 // import nanoid from 'nanoid';
 import db from '../../models/index.js';
 import AuthService from '../auth/AuthService.js';
+import UsersRouter from '../routes/users.router.js';
 
 const authService = new AuthService();
+const usersRouter = new UsersRouter();
 
 // クラス
+class UsersRouter {
+  /**
+   * ユーザー情報登録
+   *
+   */
+}
+
 class UserService {
   /**
    * ユーザー情報取得
