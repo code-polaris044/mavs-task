@@ -123,6 +123,7 @@ export default {
 
         if (response.status === 200) {
           // 成功
+          console.log(response)
 
           // サインインページにリダイレクト
           this.$router.push('/signin')

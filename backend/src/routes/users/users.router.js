@@ -8,8 +8,13 @@ const router = express.Router();
  */
 router.post('/createUser', async (req, res, next) => {
   try {
-    const body = {};
+    const body = {
+      // 仮
+      // name: 'nema',
+      // email: 'email',
+    };
     res.status(200).json(body);
+    console.log(body);
   } catch (error) {
     console.error(error);
     res.status(500).json(body);
