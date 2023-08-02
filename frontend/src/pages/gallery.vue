@@ -83,7 +83,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.gallery__main {
+  display: none;
+}
 .gallery__main--logged-in {
+  display: block;
   .gallery__contents {
     width: $common-contents-width-pc;
     margin: 0 auto 100px;
