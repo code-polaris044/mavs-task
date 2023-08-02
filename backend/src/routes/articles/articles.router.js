@@ -13,11 +13,11 @@ const router = express.Router();
 router.post('/createArticle', async (req, res, next) => {
   //本当はauthenticateできちんとtokenを設定したい
   // router.post('/createArticle', authenticate, async (req, res, next) => {
-
   try {
-    const { title, content } = req.body;
+    const { title, content, token } = req.body;
     console.log('/createArticle', title, content);
     const body = {
+      token: token,
       title: title,
       content: content,
     };
