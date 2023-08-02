@@ -17,8 +17,7 @@
         ></textarea>
       </div>
       <div class="single__btn__wrap">
-        <button class="keepp__btn" type="submit">保存</button>
-        <!-- @click="save" -->
+        <button class="keepp__btn" type="submit" @click="save">保存</button>
         <button class="back__btn" type="submit" @click="gallery">一覧へ</button>
       </div>
     </div>
@@ -33,8 +32,28 @@ export default {
       content: '',
     }
   },
-  //   save() {},
   methods: {
+    save() {
+      let memo = {
+        title: this.title,
+        content: this.content,
+      }
+
+      // APIエンドポイントのURLを設定
+      const apiUrl = 'http://your-api-url' // ここにバックエンドのAPI URLを指定
+
+      // POSTリクエストを送信
+      this.$axios
+        .post(apiUrl, memo)
+        .then((response) => {
+          // レスポンスが成功した場合の処理
+          console.log(response.data) // レスポンスデータを表示するなどの処理
+        })
+        .catch((error) => {
+          // エラーが発生した場合の処理
+          console.error(error) // エラー内容を表示するなどの処理
+        })
+    },
     gallery() {
       this.$router.push('/gallery')
     },

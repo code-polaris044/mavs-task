@@ -66,7 +66,6 @@ export default {
   methods: {
     // サインインの送信処理
     async submit() {
-      console.log('送信テスト')
       try {
         const response = await this.$axios.$post(
           `${this.$config.apiBaseUrl}/auth/signin`,
