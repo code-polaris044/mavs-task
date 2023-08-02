@@ -33,26 +33,43 @@ export default {
     }
   },
   methods: {
-    save() {
+    async save() {
       let memo = {
         title: this.title,
         content: this.content,
       }
+      console.log('memo', memo)
+      // 新規登録の送信処理
+      try {
+        // axiosで新規登録処理
+        const response = await this.$axios.post(
+          `${this.$config.apiBaseUrl}/articles/createArticle`,
+          memo // memoを送信する
+        )
 
-      // APIエンドポイントのURLを設定
-      const apiUrl = 'http://your-api-url' // ここにバックエンドのAPI URLを指定
+        if (response.status === 200) {
+          // 成功
+          console.log(response)
 
-      // POSTリクエストを送信
-      this.$axios
-        .post(apiUrl, memo)
-        .then((response) => {
-          // レスポンスが成功した場合の処理
-          console.log(response.data) // レスポンスデータを表示するなどの処理
+          // サインインページにリダイレクト
+          this.$router.push('/gallery')
+        } else {
+          // 失敗
+
+          // トースト表示
+          this.$toast.global.error({
+            message: 'メモ登録できませんでした。もう一度お試しください',
+          })
+        }
+      } catch (error) {
+        // エラーハンドリング
+        console.error('メモ登録エラー:', error)
+
+        // トースト表示
+        this.$toast.global.error({
+          message: 'メモ登録できませんでした。もう一度お試しください',
         })
-        .catch((error) => {
-          // エラーが発生した場合の処理
-          console.error(error) // エラー内容を表示するなどの処理
-        })
+      }
     },
     gallery() {
       this.$router.push('/gallery')
