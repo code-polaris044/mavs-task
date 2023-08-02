@@ -2,16 +2,23 @@
   <main class="single__main">
     <div class="single__contents">
       <h3 class="single__title">
-        <input type="text" class="single__input" placeholder="メモタイトル" />
+        <input
+          type="text"
+          class="single__input"
+          placeholder="メモタイトル"
+          v-model="title"
+        />
       </h3>
       <div class="single__teaxt">
         <textarea
           class="single__textarea"
           placeholder="ご入力ください。"
+          v-model="content"
         ></textarea>
       </div>
       <div class="single__btn__wrap">
-        <button class="keepp__btn" type="submit" @click="save">保存</button>
+        <button class="keepp__btn" type="submit">保存</button>
+        <!-- @click="save" -->
         <button class="back__btn" type="submit" @click="gallery">一覧へ</button>
       </div>
     </div>
@@ -20,14 +27,14 @@
 <script>
 export default {
   name: 'MemoForm',
+  data() {
+    return {
+      title: '',
+      content: '',
+    }
+  },
+  //   save() {},
   methods: {
-    save() {
-      let memo = {
-        title: 'メモのタイトルです',
-        content: 'メモの内容です',
-      }
-      this.$store.commit('save', memo)
-    },
     gallery() {
       this.$router.push('/gallery')
     },
@@ -99,3 +106,55 @@ export default {
   padding: 10px;
 }
 </style>
+
+<!-- export default {
+  data() {
+    return {
+      formValue: {
+        username: '',
+        email: '',
+        password: '',
+        passwordConfirm: '',
+      },
+      user: {},
+    }
+  },
+  methods: {
+    // 新規登録の送信処理
+    async submit() {
+      console.log('this.formValue', this.formValue)
+      console.log(`${this.$config.apiBaseUrl}/users/createUser`)
+
+      try {
+        // axiosで新規登録処理
+        const response = await this.$axios.post(
+          `${this.$config.apiBaseUrl}/users/createUser`,
+          this.formValue
+        )
+
+        if (response.status === 200) {
+          // 成功
+          console.log(response)
+
+          // サインインページにリダイレクト
+          this.$router.push('/signin')
+        } else {
+          // 失敗
+
+          // トースト表示
+          this.$toast.global.error({
+            message: '新規登録できませんでした。もう一度お試しください',
+          })
+        }
+      } catch (error) {
+        // エラーハンドリング
+        console.error('新規登録エラー:', error)
+
+        // トースト表示
+        this.$toast.global.error({
+          message: '新規登録できませんでした。もう一度お試しください',
+        })
+      }
+    },
+  },
+} -->

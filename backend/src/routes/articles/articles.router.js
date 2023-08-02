@@ -7,7 +7,7 @@ const router = express.Router();
 /**
  * メモ新規登録
  */
-router.get('/createArticle', authenticate, async (req, res, next) => {
+router.post('/createArticle', authenticate, async (req, res, next) => {
   try {
     let body = {};
 
