@@ -24,7 +24,7 @@ class UserService {
     const user = await db.Users.create({
       name: username,
       email: email,
-      password: password,
+      password: authService.hashSha256(password),
     });
 
     // 登録されたユーザー情報を返す
@@ -71,7 +71,7 @@ class UserService {
       const hash_password = authService.hashSha256(password);
       where.password = hash_password;
     }
-
+    console.log(where);
     // 検索実行
     const rows = await db.Users.findAll({ where });
 
