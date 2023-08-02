@@ -11,7 +11,9 @@ const router = express.Router();
  * メモ新規登録
  */
 router.post('/createArticle', async (req, res, next) => {
-  // , authenticate
+  //本当はauthenticateできちんとtokenを設定したい
+  // router.post('/createArticle', authenticate, async (req, res, next) => {
+
   try {
     const { title, content } = req.body;
     console.log('/createArticle', title, content);
