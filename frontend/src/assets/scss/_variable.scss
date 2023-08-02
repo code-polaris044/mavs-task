@@ -134,5 +134,5 @@ $d: 6em;
 $r: .5*$d;
 $g: $d*(math.sqrt(2) - 1);
 $s: $d+$g;
-$p: $r/3;
+$p: math.div($r, 3);
 $q: 2*$p;

@@ -17,12 +17,20 @@
         ></textarea>
       </div>
       <div class="single__btn__wrap">
-        <button class="keepp__btn" type="submit" @click="save">保存</button>
+        <button
+          class="keepp__btn"
+          type="submit"
+          @click="save"
+          :disabled="!title || !content"
+        >
+          保存
+        </button>
         <button class="back__btn" type="submit" @click="gallery">一覧へ</button>
       </div>
     </div>
   </main>
 </template>
+
 <script>
 export default {
   name: 'MemoForm',
