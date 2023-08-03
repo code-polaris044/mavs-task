@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'MemoForm',
   data() {
@@ -41,17 +41,18 @@ export default {
       content: '',
     }
   },
-  computed: {
-    ...mapGetters(['getToken']),
-  },
+  //   computed: {
+  //     ...mapGetters(['getToken']),
+  //   },
   methods: {
     async save() {
-      const token = this.getToken
+      //   const token = this.getToken
       let memo = {
         title: this.title,
         content: this.content,
       }
-      console.log('memo', memo, token)
+      console.log('memo', memo)
+      //   , token
       // 新規登録の送信処理
       try {
         // axiosで新規登録処理
