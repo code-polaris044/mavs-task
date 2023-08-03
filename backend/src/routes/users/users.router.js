@@ -20,7 +20,6 @@ router.post('/createUser', async (req, res, next) => {
     await userService.createUser(username, email, password);
     // 登録したユーザー情報をフロントエンドに返す
     res.status(200).json(body);
-    // res.status(200).json(body);
     console.log(body);
   } catch (error) {
     console.error(error);
