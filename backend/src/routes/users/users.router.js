@@ -9,7 +9,9 @@ const userService = new UserService();
 router.post('/createUser', async (req, res, next) => {
   try {
     // フロントエンドからのリクエストデータを取得
+    console.log(req.body);
     const { username, email, password } = req.body; //リクエストデータを分割代入
+
     // 返却用データを生成
     const body = {
       username: username,
