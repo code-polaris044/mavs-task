@@ -13,19 +13,25 @@ router.post('/createArticle', async (req, res, next) => {
   //本当はauthenticateできちんとtokenを設定したい
   // router.post('/createArticle', authenticate, async (req, res, next) => {
   try {
-    const token = req.headers.authorization;
-    console.log('メモトークン', req.headers);
+    const authorizationHeader = req.headers['authorization'];
+    console.log('メモトークン', req.headers['authorization']);
+
+    const token = authorizationHeader.replace('Bearer ', ''); // Bearerを削除してトークンの部分のみを取得
+    console.log('Bearerなしトークン:', token);
+
     const decoded = authService.checkToken(token);
     console.log('トークン分解', decoded);
-    // const { title, content, token } = req.body;
+    const id = decoded.id;
+    console.log('createArticle', id);
     const { title, content } = req.body;
-    console.log('createArticle', title, content);
+    console.log('createArticle', title, content, id);
     const body = {
-      // token: token,
+      id: id,
       title: title,
       content: content,
     };
-    await articleService.createMemo(title, content);
+    await articleService.createMemo(title, content, id);
+    console.log('レス', body);
     res.status(200).json(body);
   } catch (error) {
     console.error(error);

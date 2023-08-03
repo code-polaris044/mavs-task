@@ -63,7 +63,7 @@ export default {
             },
           }
         )
-
+        this.$router.push('/gallery')
         // 以下の処理は省略
       } catch (error) {
         // エラーハンドリング

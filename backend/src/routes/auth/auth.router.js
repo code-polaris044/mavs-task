@@ -21,11 +21,10 @@ router.post('/signin', async (req, res, next) => {
     // パラメータ存在しない場合は再ログインを促すため、空で返却する
     if (!resSearchUser.length) return res.status(200).json({});
 
-    // const resSearchUserId = resSearchUser.find((item) => item.id === 1);
     const resSearchUserId = resSearchUser[0].id;
     const id = resSearchUserId;
 
-    console.log(id);
+    console.log('サインインid', id);
 
     // トークンを発行する
     const resCreateToken = await authService.createToken(email, id);

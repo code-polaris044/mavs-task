@@ -7,13 +7,14 @@ class ArticleService {
    * @param {string} content メモコンテンツ
    * @returns {Object} 登録されたメモ情報
    */
-  async createMemo(title, content) {
-    console.log('createMemo', title, content);
+  async createMemo(title, content, id) {
+    console.log('createMemo', title, content, id);
     try {
       // articlesテーブルに新しいメモを登録
       const newMemo = await db.Articles.create({
         title: title,
         content: content,
+        author_id: id,
       });
 
       // 登録されたメモ情報を返す
