@@ -4,7 +4,7 @@
       <figure class="index__img__wrap">
         <img src="~/assets/img/memo.jpg" alt="memo" class="memo__img" />
         <figcaption class="index__text__wrap">
-          <h3 class="index__leadText">save inspiration</h3>
+          <h3 class="index__leadText">Save Inspiration</h3>
         </figcaption>
       </figure>
     </div>
