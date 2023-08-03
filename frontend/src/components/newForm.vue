@@ -32,7 +32,6 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
 export default {
   name: 'MemoForm',
   data() {
@@ -41,45 +40,34 @@ export default {
       content: '',
     }
   },
-  //   computed: {
-  //     ...mapGetters(['getToken']),
-  //   },
   methods: {
     async save() {
-      //   const token = this.getToken
+      const token = this.$store.state.auth.token
       let memo = {
         title: this.title,
         content: this.content,
       }
-      console.log('memo', memo)
-      //   , token
+      console.log('memo', memo, token)
+
       // 新規登録の送信処理
       try {
         // axiosで新規登録処理
         const response = await this.$axios.post(
           `${this.$config.apiBaseUrl}/articles/createArticle`,
-          memo // memoを送信する
+          memo, // memoを送信する
+          {
+            headers: {
+              common: {
+                Authorization: `Bearer ${token}`, // Authorizationヘッダーにトークンを付与
+              },
+            },
+          }
         )
 
-        if (response.status === 200) {
-          // 成功
-          console.log(response)
-
-          // サインインページにリダイレクト
-          this.$router.push('/gallery')
-        } else {
-          // 失敗
-
-          // トースト表示
-          this.$toast.global.error({
-            message: 'メモ登録できませんでした。もう一度お試しください',
-          })
-        }
+        // 以下の処理は省略
       } catch (error) {
         // エラーハンドリング
         console.error('メモ登録エラー:', error)
-
-        // トースト表示
         this.$toast.global.error({
           message: 'メモ登録できませんでした。もう一度お試しください',
         })
@@ -91,6 +79,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .single__contents {
   width: $common-contents-width-pc;

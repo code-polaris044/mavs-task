@@ -4,7 +4,7 @@ function setupAxiosInterceptor($axios, token) {
   // リクエストインターセプターを設定
   $axios.onRequest((config) => {
     // トークンがあれば、HTTPヘッダーに付与
-
+    console.log(token)
     if (token) {
       config.headers.common['Authorization'] = `Bearer ${token}`
     } else {
@@ -21,9 +21,9 @@ export default function ({ $axios, store }) {
     (state, getters) => getters['auth/getToken'],
     (token) => {
       setupAxiosInterceptor($axios, token) // トークンが更新された後にリクエストインターセプターを設定
+      console.log(token)
     }
   )
 
-  // 初回のトークンをログに出力
   const initialToken = store.getters['auth/getToken']
 }

@@ -9,6 +9,7 @@ const authService = new AuthService();
  */
 const authenticate = function authenticate(req, res, next) {
   try {
+    //確認
     const token = req.headers.authorization;
     const decoded = authService.checkToken(token);
     req.jwtPayload = decoded;
